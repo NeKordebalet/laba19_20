@@ -56,29 +56,4 @@ def train_with_noise(std: float) -> float:
 # Точка входа (main)
 
 if __name__ == "__main__":
-    # Эксперимент с разными значениями std
-    std_values = [0.01, 0.03, 0.3]
-    losses = [train_with_noise(std) for std in std_values]
-
-    # Вывод результатов в консоль
-    print("Результаты эксперимента:")
-    for std, loss in zip(std_values, losses):
-        print(f"std={std:.2f} → log_loss={loss:.4f}")
-
-    # Визуализация
-    fig, ax = plt.subplots(figsize=(6, 3))
-    for i, loss in enumerate(losses):
-        rect = plt.Rectangle((i, 0), 1, 1, color=plt.cm.coolwarm(loss / max(losses)))
-        ax.add_patch(rect)
-        ax.text(i + 0.5, 0.5, f"{loss:.4f}", ha="center", va="center", color="black")
-
-    ax.set_xlim(0, len(std_values))
-    ax.set_ylim(0, 1)
-    ax.set_xticks([i + 0.5 for i in range(len(std_values))])
-    ax.set_xticklabels([f"std={s}" for s in std_values])
-    ax.set_yticks([])
-    ax.set_title("Log loss при разных std")
-    ax.set_xlabel("Уровень шума")
-    ax.set_ylabel("Условная шкала")
-
-    plt.show()
+    main()
