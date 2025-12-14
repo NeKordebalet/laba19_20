@@ -1,4 +1,4 @@
-from experiment import train_with_noise, visualize_results
+from exper import train_with_noise, visualize_results
 
 if __name__ == "__main__":
     # Эксперимент с разными значениями std

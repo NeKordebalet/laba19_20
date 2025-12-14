@@ -1,5 +1,6 @@
+from dvadcatoe import build_auto_model, build_manual_model, train_and_evaluate
+
 import numpy as np
-from models import build_auto_model, build_manual_model, train_and_evaluate
 
 if __name__ == "__main__":
     # Автоматическая инициализация
