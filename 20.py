@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 import time
 
+
 # Данные
 
 (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
@@ -81,12 +82,20 @@ def train_and_evaluate(model, name):
 
 
 
-# Сравнение моделей
+# Точка входа (main)
 
-auto_model = build_auto_model()
-acc_auto = train_and_evaluate(auto_model, "Автоматическая инициализация")
+if __name__ == "__main__":
+    # Автоматическая инициализация
+    auto_model = build_auto_model()
+    acc_auto = train_and_evaluate(auto_model, "Автоматическая инициализация")
 
-custom_matrix = np.linalg.qr(np.random.randn(784, 128))[0].astype("float32")
-manual_model = build_manual_model(custom_matrix)
-acc_manual = train_and_evaluate(manual_model, "Ручная инициализация")
+    # Ручная инициализация (ортогональная матрица)
+    custom_matrix = np.linalg.qr(np.random.randn(784, 128))[0].astype("float32")
+    manual_model = build_manual_model(custom_matrix)
+    acc_manual = train_and_evaluate(manual_model, "Ручная инициализация")
+
+    # Итоговое сравнение
+    print("\nСравнение моделей:")
+    print(f"Автоматическая инициализация → точность: {acc_auto:.4f}")
+    print(f"Ручная инициализация       → точность: {acc_manual:.4f}")
 
